@@ -17,3 +17,7 @@ Aplicativo PWA para finanças pessoais e hábitos, preparado para instalação n
 - O endereço do GitHub Pages e o código do aplicativo serão públicos. Os dados importados são guardados no armazenamento local do dispositivo; eles não são enviados ao GitHub nem sincronizados automaticamente.
 - O armazenamento local não possui criptografia própria nem login. Exporte backups periódicos e mantenha o iPhone protegido por senha/biometria.
 - Importar um backup JSON no iPhone **substitui** os dados locais do aplicativo. Guarde uma cópia antes de importar.
+
+## Verificação da publicação
+
+Após configurar **Settings → Pages → Deploy from a branch → main → /(root)**, aguarde o primeiro deploy. Se o endereço mostrar 404, confirme a configuração na página de Pages e consulte a aba **Actions** para conferir a implantação. Os dados financeiros privados não fazem parte deste repositório.

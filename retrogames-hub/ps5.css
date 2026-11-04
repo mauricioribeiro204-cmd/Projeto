@@ -49,3 +49,17 @@ body{background:radial-gradient(ellipse 70vw 45vw at 80% -8%,#172d59 0%,transpar
 @media(max-width:630px){.topbar{height:67px;padding:0 17px}.ps5-brand{letter-spacing:.4px;font-size:11px}.ps5-brand-mark{width:28px;height:28px;font-size:18px}.ps5-brand small{display:none}.ps5-nav{gap:11px}.ps5-nav a{font-size:10px;line-height:64px}.ps5-nav a:nth-child(2){display:none}.top-actions{gap:7px}.top-actions .circle-btn{display:none}.profile-dot{width:29px;height:29px}.content{padding:22px 16px 45px}.featured{min-height:340px}.featured-content{padding:27px 24px}.featured h2{font-size:clamp(30px,8.5vw,49px)}.featured-content>p{font-size:12px}.feature-studio{font-size:9px;margin-top:25px}.feature-sign{font-size:140px;right:5%;top:42%}.feature-platform{font-size:9px;max-width:125px}.library{margin-top:35px}.library-top{align-items:flex-start;flex-direction:column}.library-controls{width:100%}.library-controls .search{flex:1}.game-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.game-info{padding:10px 0 4px}.nfs-wordmark{font-size:clamp(17px,4vw,28px)}.gta-wordmark{font-size:clamp(18px,4.5vw,27px)}.bully-wordmark,.black-wordmark{font-size:clamp(42px,11vw,63px)}.gh-title strong{font-size:clamp(44px,11vw,65px)}.iso-manager{padding:17px;margin-top:45px}.iso-manager h2{font-size:21px}.footer{font-size:10px;padding:17px}}
 @media(max-width:390px){.ps5-nav a:last-child{display:none}.game-titleline h3{font-size:11px}}
 @media(prefers-reduced-motion:reduce){.cover,.featured,.btn-primary{transition:none}}
+
+/* Biblioteca local: sem capa fixa ou destaque sem ISO. */
+.game-grid:empty{display:none}
+.featured[hidden]{display:none!important}
+.cover-generic{
+  --cover-hue:225;
+  background:radial-gradient(circle at 67% 25%,hsl(var(--cover-hue) 55% 57% / .65),transparent 55%),linear-gradient(152deg,#183966,#111d40 68%,#0b1426);
+  position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;
+}
+.cover-generic::before{content:"";position:absolute;width:75%;aspect-ratio:1;inset:15% auto auto 12%;border:1px solid #ffffff2d;border-radius:50%;box-shadow:0 0 0 28px #ffffff08,0 0 0 70px #ffffff07}
+.generic-cover-glyph{font-size:clamp(52px,7vw,90px);color:#ffffff4a;line-height:1;position:absolute;top:20%}
+.generic-cover-title{z-index:4;position:absolute;left:12px;right:12px;bottom:18%;font-weight:800;letter-spacing:-.03em;line-height:1.1;font-size:clamp(17px,2vw,30px);overflow-wrap:anywhere;text-align:center;text-shadow:0 2px 12px #0009;max-height:45%;overflow:hidden}
+.featured[data-theme="generic"]{background:radial-gradient(circle at 75% 35%,#5476b6,#233c70 48%,#0c1831)}
+@media(max-width:630px){.generic-cover-title{font-size:clamp(17px,5.1vw,26px)}}

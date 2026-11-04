@@ -109,23 +109,22 @@
     }
     saveAssignments();
   }
-  function updateGameCards() {
-    document.querySelectorAll('.game[data-id]').forEach(card => {
-      const id = card.dataset.id;
-      let tag = card.querySelector('.game-linked-iso');
-      if (!tag) {
-        tag = document.createElement('span');
-        tag.className = 'game-linked-iso';
-        card.querySelector('.game-info')?.append(tag);
-      }
-      const path = pathAssignedToGame(id);
-      tag.textContent = path ? '✓ ISO encontrada: ' + path.split('/').pop() : 'ISO ainda não localizada na pasta';
-      tag.classList.toggle('warn', !path);
-      tag.title = path || '';
+  function readableEntries() {
+    if (!folderReadable) return [];
+    return files.map(file => {
+      const manual = Object.keys(names).find(id => assignments[id] === file.path);
+      const preset = manual || inferGame(file.name);
+      const basename = file.name.replace(/\.[^.]+$/, '');
+      // Mostra arquivos novos mesmo que não estejam na lista original de 5 jogos.
+      const title = preset ? names[preset] : basename.replace(/[._]+/g, ' ').replace(/\s+/g, ' ').trim();
+      return { id: 'iso:' + file.path, path: file.path, fileName: file.name, title, preset, size: file.size };
     });
+  }
+  function updateGameCards() {
+    const entries = readableEntries();
     window.dispatchEvent(new CustomEvent('retrogames:folderupdated', {
-      detail: { count: files.length, linked: Object.keys(names).filter(pathAssignedToGame).length,
-        availableIds: folderReadable ? Object.keys(names).filter(pathAssignedToGame) : [], folderReadable }
+      detail: { count: files.length, linked: entries.length,
+        entries, availableIds: entries.map(entry => entry.id), folderReadable }
     }));
   }
   const prettySize = size => (size / 1024 ** 3 >= 1
@@ -344,9 +343,12 @@
   }
   window.RetroISO = {
     getAvailableGameIds() {
-      return folderReadable ? Object.keys(names).filter(pathAssignedToGame) : [];
+      return readableEntries().map(entry => entry.id);
     },
+    getEntries: readableEntries,
     getGameFileName(id) {
+      const record = readableEntries().find(entry => entry.id === id);
+      if (record) return record.fileName;
       const path = pathAssignedToGame(id);
       return path ? path.split('/').pop() : '';
     },

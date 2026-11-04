@@ -17,7 +17,8 @@
     nfs: 'Need for Speed Underground 2',
     'san-andreas': 'GTA San Andreas',
     bully: 'Bully',
-    black: 'Black'
+    black: 'Black',
+    'guitar-hero-3': 'Guitar Hero III: Legends of Rock'
   };
   const connectBtn = document.getElementById('iso-connect');
   const refreshBtn = document.getElementById('iso-refresh');
@@ -33,6 +34,7 @@
   let files = [];
   let assignments = {};
   let busy = false;
+  let folderReadable = false;
   const collator = new Intl.Collator('pt-BR', { numeric: true, sensitivity: 'base' });
   try { assignments = JSON.parse(localStorage.getItem(prefix + 'iso-assignments') || '{}') || {}; }
   catch { assignments = {}; }
@@ -92,6 +94,7 @@
     if (/(san andreas|gta sa\b|gtasa\b)/.test(v)) return 'san-andreas';
     if (/(\bbully\b|canis canem edit)/.test(v)) return 'bully';
     if (/^black(?:\s|$)/.test(v)) return 'black';
+    if (/(\bguitar\s*hero\s*(?:3|iii)\b|\bgh\s*3\b|\blegends of rock\b)/.test(v)) return 'guitar-hero-3';
     return '';
   }
   function pathAssignedToGame(id) {
@@ -121,7 +124,8 @@
       tag.title = path || '';
     });
     window.dispatchEvent(new CustomEvent('retrogames:folderupdated', {
-      detail: { count: files.length, linked: Object.keys(names).filter(pathAssignedToGame).length }
+      detail: { count: files.length, linked: Object.keys(names).filter(pathAssignedToGame).length,
+        availableIds: folderReadable ? Object.keys(names).filter(pathAssignedToGame) : [], folderReadable }
     }));
   }
   const prettySize = size => (size / 1024 ** 3 >= 1
@@ -219,12 +223,14 @@
     setMessage('Procurando jogos na pasta...');
     try {
       files = await readDirectoryContents(directory);
+      folderReadable = true;
       chooseAutoMappings();
       renderFiles();
       setMessage(files.length + (files.length === 1 ? ' jogo encontrado' : ' arquivos de jogo encontrados') + ' · Pasta vinculada apenas neste navegador. Nenhum arquivo enviado.');
       connectBtn.textContent = '◈  Trocar pasta';
     } catch (error) {
       files = [];
+      folderReadable = false;
       renderFiles();
       setMessage('Não foi possível ler a pasta. Clique em Reconectar pasta e conceda permissão.');
       connectBtn.textContent = '◈  Reconectar pasta';
@@ -255,6 +261,7 @@
       directory = selected;
       folderName.textContent = selected.name;
       files = [];
+      folderReadable = false;
       assignments = {};
       saveAssignments();
       try { await dbOperation('put', selected); }
@@ -269,6 +276,9 @@
     if (busy || !directory) return;
     if (await reconnect()) await scanDirectory();
     else {
+      files = [];
+      folderReadable = false;
+      renderFiles();
       connectBtn.textContent = '◈  Reconectar pasta';
       setMessage('A pasta continua lembrada, mas a permissão expirou. Clique em Atualizar para autorizar novamente ou Trocar pasta.');
     }
@@ -277,6 +287,7 @@
     if (busy) return;
     directory = null;
     files = [];
+    folderReadable = false;
     assignments = {};
     saveAssignments();
     try { await dbOperation('delete'); } catch { /* deixa de ser usada nesta sessão */ }
@@ -293,6 +304,7 @@
       size: f.size
     })).sort((a,b) => collator.compare(a.path,b.path));
     directory = null;
+    folderReadable = true;
     assignments = {};
     chooseAutoMappings();
     folderName.textContent = files[0]?.path.split('/')[0] || 'Pasta temporária';
@@ -319,6 +331,7 @@
       updateControls();
       if (await hasPermission(saved)) await scanDirectory();
       else {
+        folderReadable = false;
         connectBtn.textContent = '◈  Trocar pasta';
         refreshBtn.textContent = '↻  Reconectar pasta';
         setMessage('Pasta lembrada! Clique em Reconectar pasta e autorize o acesso para atualizar suas ISOs.');
@@ -330,6 +343,9 @@
     }
   }
   window.RetroISO = {
+    getAvailableGameIds() {
+      return folderReadable ? Object.keys(names).filter(pathAssignedToGame) : [];
+    },
     getGameFileName(id) {
       const path = pathAssignedToGame(id);
       return path ? path.split('/').pop() : '';

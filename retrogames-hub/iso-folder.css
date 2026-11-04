@@ -1,0 +1,26 @@
+/* Gerenciador de pasta local. Isolado do restante do aplicativo. */
+.iso-manager{margin-top:42px;margin-bottom:36px;scroll-margin-top:30px;padding:25px 27px 18px;border:1px solid #354152;border-radius:16px;background:linear-gradient(145deg,#192331,#121824 70%);box-shadow:0 8px 34px #0002}
+.iso-manager-header{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.iso-manager h2{font:800 31px 'Barlow Condensed',Impact,sans-serif;margin:0}
+.iso-manager h2 .iso-count{display:inline-flex;vertical-align:middle;padding:6px 9px;margin-left:9px;border:1px solid #494b5e;background:#2c3040;border-radius:99px;color:#c7c6d5;font:700 9px 'DM Sans',system-ui,sans-serif}
+.iso-subtitle{font-size:11px;line-height:1.7;color:#adb3c2;max-width:600px;margin:9px 0 0}
+.iso-manager-buttons{display:flex;flex-wrap:wrap;gap:9px;justify-content:flex-end;align-items:center}
+.iso-manager-buttons button{padding:12px 14px;border-radius:8px;font:800 10px 'DM Sans',system-ui,sans-serif;white-space:nowrap}
+.iso-primary{background:#ffbd8a;color:#241b1e;border:1px solid #ffbd8a}.iso-primary:hover{background:#ffe1be}
+.iso-secondary{background:#29364a;color:#f7f7fc;border:1px solid #4b556b}.iso-secondary:hover:not(:disabled){background:#36465d}.iso-secondary:disabled{opacity:.4;cursor:not-allowed}
+.iso-quiet{background:none;border:1px solid #4b4552;color:#b4b0bd}.iso-quiet:hover{background:#413341}
+.iso-location{margin-top:20px;display:flex;align-items:center;gap:13px;background:#111b24;border:1px solid #34404c;border-radius:12px;padding:14px}
+.iso-folder-icon{display:grid;place-items:center;width:44px;height:44px;border-radius:10px;background:#334052;color:#c0c8f6;font-size:25px;flex-shrink:0}
+.iso-location>div{min-width:0;flex:1}.iso-location strong{display:block;word-break:break-word;font-size:12px}.iso-location span#iso-folder-status{display:block;margin-top:6px;font-size:10px;color:#a5b3bd;line-height:1.6}.iso-storage-tag{font-size:9px;letter-spacing:1px;white-space:nowrap;font-weight:900;color:#80d4a6}
+.iso-list{display:grid;gap:8px;margin-top:12px}.iso-empty{border:1px dashed #425061;border-radius:10px;text-align:center;padding:21px 12px;color:#aeb8ca;font-size:11px}
+.iso-file{display:flex;gap:12px;align-items:center;background:#1d2734;border:1px solid #344250;border-radius:10px;padding:10px 12px;min-width:0}
+.iso-file-icon{display:grid;place-items:center;flex-shrink:0;width:35px;height:37px;border-radius:7px;color:#f2b789;background:#483c42;font-size:10px;font-weight:900}
+.iso-file-main{flex:1;min-width:0}.iso-file-name{display:block;font-size:11px;font-weight:800;color:#f1f3f7;overflow-wrap:anywhere}.iso-file-meta{display:block;margin-top:5px;color:#a4abbc;font-size:9px;overflow-wrap:anywhere;line-height:1.4}
+.iso-label{font-size:9px;font-weight:700;color:#c1bdca;white-space:nowrap}
+.iso-assign{min-width:160px;max-width:175px;border:1px solid #566076;background:#141b2b;color:#eeeefa;padding:9px 7px;border-radius:7px;font-size:10px}
+.iso-launch{font-size:10px;font-weight:900;text-decoration:none;padding:9px 12px;background:#3a3343;border:1px solid #695168;border-radius:7px;color:#ffd5b7;white-space:nowrap}.iso-launch:hover{background:#5c4453}
+.iso-note{font-size:10px;line-height:1.8;color:#99a5b7;margin:15px 3px 0}.iso-note b{color:#d9dce9}
+.game-linked-iso{display:block;margin-top:10px;color:#81d9b4;font-size:9px;line-height:1.4;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.game-linked-iso.warn{color:#f1bd85}
+@media(max-width:1100px){.iso-manager-header{align-items:flex-start;flex-direction:column}.iso-manager-buttons{justify-content:flex-start}}
+@media(max-width:750px){.iso-file{flex-wrap:wrap}.iso-file-main{flex-basis:calc(100% - 54px)}.iso-label{display:none}.iso-assign{flex:1;max-width:none;min-width:130px}.iso-launch{flex-shrink:0}.iso-manager{padding:18px}.iso-storage-tag{display:none}}
+@media(max-width:440px){.iso-manager-buttons{width:100%}.iso-primary{flex:1}.iso-file{gap:8px}.iso-launch{width:100%;text-align:center}.iso-assign{width:100%}.iso-manager h2{font-size:26px}}

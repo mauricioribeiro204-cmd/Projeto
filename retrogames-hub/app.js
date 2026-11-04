@@ -65,13 +65,19 @@
     if (!Object.hasOwn(GAMES, id)) return;
     safelyWrite('lastPlayed', id);
     renderLastPlayed();
-    const tab = window.open(EMULATOR, '_blank', 'noopener,noreferrer');
-    if (!tab) {
-      // Alguns navegadores bloqueiam novas abas; substituir a atual garante acesso.
-      window.location.href = EMULATOR;
+    const linkedISO = window.RetroISO?.getGameFileName(id);
+    // O browser não permite transferir automaticamente uma ISO local ao site Play!.js.
+    // Abrir o player em nova aba ainda exige selecionar o arquivo no emulador.
+    const tab = window.open(EMULATOR, '_blank');
+    if (tab) {
+      try { tab.opener = null; } catch { /* sem acesso cross-origin */ }
+    } else {
+      notify('O navegador bloqueou a nova aba. Permita pop-ups para abrir o emulador.');
       return;
     }
-    notify('Emulador aberto! Selecione a ISO de ' + GAMES[id] + ' dentro do Play!.js. A escolha não é automática.');
+    notify(linkedISO
+      ? 'ISO localizada: ' + linkedISO + '. No Play!.js, escolha esse mesmo arquivo para jogar.'
+      : 'Emulador aberto! Selecione a ISO de ' + GAMES[id] + ' dentro do Play!.js.');
   }
   document.querySelectorAll('[data-play]').forEach(button => {
     button.addEventListener('click', () => openGame(button.dataset.play));

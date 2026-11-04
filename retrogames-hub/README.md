@@ -1,11 +1,12 @@
 # RetroGames Hub
 
-Biblioteca visual em HTML, CSS e JavaScript para quatro clássicos do PlayStation 2:
+Biblioteca visual em HTML, CSS e JavaScript para cinco clássicos do PlayStation 2:
 
 - Need for Speed Underground 2
 - Grand Theft Auto: San Andreas
 - Bully
 - Black
+- Guitar Hero III: Legends of Rock
 
 ## Abrir
 Com o GitHub Pages do repositório `mauricioribeiro204-cmd/Projeto` configurado para publicar `main` / `(root)`, abra:
@@ -16,7 +17,7 @@ A página é independente de `/Projeto/index.html` (Meu Controle), que **não fo
 
 ## Pasta de ISOs lembrada
 
-Na seção **Minha pasta de ISOs**, clique em **Conectar pasta**, escolha uma pasta no Windows (por exemplo, `D:\\RetroGames\\PS2`) e autorize o acesso. O navegador lista jogos com extensões `.iso`, `.chd`, `.cso`, `.isz`, `.bin` e `.elf` (inclusive em subpastas até três níveis). Os quatro clássicos são vinculados automaticamente quando o nome do arquivo é reconhecido; você pode escolher a correspondência manualmente nos menus **Vincular a**.
+Na seção **Minha pasta de ISOs**, clique em **Conectar pasta**, escolha uma pasta no Windows (por exemplo, `D:\\RetroGames\\PS2`) e autorize o acesso. O navegador lista jogos com extensões `.iso`, `.chd`, `.cso`, `.isz`, `.bin` e `.elf` (inclusive em subpastas até três níveis). Os cinco clássicos são vinculados automaticamente quando o nome do arquivo é reconhecido; você pode escolher a correspondência manualmente nos menus **Vincular a**.
 
 O projeto guarda **a referência à pasta** no armazenamento IndexedDB deste navegador, não o caminho completo em texto e não os arquivos ISO. Ao abrir novamente o site, ele tenta ler a pasta e atualizar a lista. Se a permissão tiver expirado, use **Reconectar pasta** e permita a leitura. No Chrome recente, conceder acesso permanente ou instalar o app pode permitir uma experiência com menos solicitações. As permissões dependem do navegador e do usuário.
 
@@ -25,6 +26,14 @@ O projeto guarda **a referência à pasta** no armazenamento IndexedDB deste nav
 **Compatibilidade:** o acesso persistente a diretórios exige desktop Chrome ou Edge. Em navegadores sem `showDirectoryPicker`, o aplicativo oferece uma seleção de pasta *temporária*, que precisa ser repetida após recarregar.
 
 **Limite atual:** o Play!.js oficial está em outro domínio e **não recebe automaticamente** as ISOs identificadas aqui. O botão Jogar abre seu emulador oficial em outra aba, e você escolhe o arquivo local no seletor dele. Para executar automaticamente o jogo já vinculado, seria necessária uma versão do motor Play! hospedada no próprio projeto, adaptada para consumir esses arquivos e validada para cada jogo.
+
+## Mostrar somente os jogos presentes na pasta
+
+A biblioteca fica **vazia até o usuário conceder acesso a uma pasta local**. Após conectar, aparecem **somente os títulos que tenham uma ISO reconhecida e vinculada**: Need for Speed Underground 2, GTA San Andreas, Bully, Black e Guitar Hero III. Os arquivos são reconhecidos pelo nome; arquivos com nome genérico podem ser associados pelo menu **Vincular a**.
+
+O destaque principal muda de acordo com o jogo selecionado e a interface utiliza um visual minimalista inspirado em consoles modernos, sem reproduzir marcas/ativos da interface oficial do PS5.
+
+Se a pasta estiver vazia, for desconectada ou o navegador não puder mais lê-la, as capas desaparecem até que o acesso seja restabelecido. A busca e os favoritos filtram **apenas** os jogos localizados. Jogos ausentes não são oferecidos como se estivessem disponíveis.
 
 ## Como jogar
 1. Abra a biblioteca no computador.
@@ -46,9 +55,10 @@ No navegador, escolha **Adicionar à tela inicial** / **Instalar aplicativo**, q
 ## Projeto
 - `index.html`: biblioteca e interface.
 - `styles.css`: visual responsivo e ilustrações dos jogos feitas com CSS/SVG.
-- `app.js`: ações dos botões, busca, favoritos, detecção de gamepad e abertura do emulador.
+- `app.js`: ações dos botões, seleção de jogos disponíveis, busca, favoritos, detecção de gamepad e abertura do emulador.
 - `iso-folder.js`: seleção/lembrança de pasta no IndexedDB, varredura de ISOs, permissões, vínculos por jogo.
 - `iso-folder.css`: apresentação dos arquivos encontrados na pasta.
+- `ps5.css`: estilo minimalista inspirado em consoles atuais.
 - `manifest.webmanifest`: dados do app/atalho.
 - `icon.svg`: ícone próprio.
 

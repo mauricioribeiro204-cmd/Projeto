@@ -112,7 +112,7 @@
         <div class="empty" id="empty" hidden><span>⌕</span><h3>Nenhum jogo encontrado</h3><p>Tente outra busca ou remova o filtro de favoritos.</p></div>
       </section>
 
-      <section class="tip-strip"><div class="tip-symbol">⌘</div><div><strong>Pronto para voltar no tempo?</strong><p>Ao clicar em Jogar, você abre o emulador TabStationToo. Na primeira vez, escolha a BIOS do seu PS2 e a pasta com suas ISOs. Os arquivos permanecem no dispositivo.</p></div><button type="button" data-help>Ver como funciona ↗</button></section>
+      <section class="tip-strip"><div class="tip-symbol">⌘</div><div><strong>Pronto para voltar no tempo?</strong><p>Ao clicar em Jogar, você abre o Play!.js em outra aba. Escolha sua ISO dentro do emulador para começar. Não é necessário fornecer BIOS.</p></div><button type="button" data-help>Ver como funciona ↗</button></section>
     </main>
     <footer class="footer"><span>© 2026 RetroGames Hub · Sua biblioteca pessoal</span><span>Interface independente · Sem jogos ou BIOS inclusos</span></footer>
   </div>
@@ -121,15 +121,15 @@
 <dialog id="help-dialog" class="dialog">
   <div class="modal-head"><span class="modal-label">GUIA RÁPIDO</span><button type="button" class="close-modal" aria-label="Fechar" data-close>✕</button></div>
   <h2>Como jogar no navegador</h2>
-  <p class="modal-intro">O RetroGames Hub é sua biblioteca. A emulação acontece no <strong>TabStationToo</strong>, em uma nova aba, sem instalar um programa no computador.</p>
+  <p class="modal-intro">O RetroGames Hub é sua biblioteca. A emulação acontece no <strong>Play!.js</strong>, em uma nova aba, sem instalar um programa no computador. Esse emulador não precisa de BIOS.</p>
   <ol class="steps">
-    <li><b>1</b><div><strong>Tenha seus próprios arquivos</strong><span>Uma BIOS extraída do seu PS2 e ISOs criadas a partir dos seus discos originais.</span></div></li>
-    <li><b>2</b><div><strong>Clique em Jogar</strong><span>O emulador abre em uma nova aba. Ele não recebe automaticamente o jogo escolhido nesta biblioteca.</span></div></li>
-    <li><b>3</b><div><strong>Selecione a BIOS e a ISO</strong><span>Na biblioteca do emulador, escolha a BIOS e a pasta com seus jogos. Depois coloque o disco desejado e inicie.</span></div></li>
-    <li><b>4</b><div><strong>Use teclado ou controle</strong><span>O emulador aceita teclado e controles compatíveis. Os salvamentos ficam no navegador do emulador.</span></div></li>
+    <li><b>1</b><div><strong>Tenha seus próprios arquivos</strong><span>Uma ISO criada a partir de um disco original de PS2 que você possui. Não é necessário fornecer BIOS ao Play!.js.</span></div></li>
+    <li><b>2</b><div><strong>Clique em Jogar</strong><span>O Play!.js abre em uma nova aba. Ele não recebe automaticamente a ISO do jogo escolhido nesta biblioteca.</span></div></li>
+    <li><b>3</b><div><strong>Selecione a ISO</strong><span>No Play!.js, escolha a imagem ISO do seu jogo. O navegador lerá esse arquivo localmente.</span></div></li>
+    <li><b>4</b><div><strong>Use teclado ou controle</strong><span>O Play!.js mostra os controles do teclado na página. O suporte a controles físicos e salvamentos na versão web pode variar.</span></div></li>
   </ol>
-  <div class="modal-note"><strong>Importante:</strong> o projeto não inclui BIOS, ISOs ou os jogos. O emulador é experimental; compatibilidade e desempenho variam, e atualmente ele não suporta celulares.</div>
-  <div class="modal-actions"><button type="button" class="btn-secondary" data-close>Voltar à biblioteca</button><a class="btn-primary button-link" href="https://tabstationtoo.github.io/TabStationToo/" target="_blank" rel="noopener noreferrer">Abrir emulador ↗</a></div>
+  <div class="modal-note"><strong>Importante:</strong> o projeto não inclui ISOs nem jogos. O Play!.js usa uma BIOS de alto nível integrada e é experimental: compatibilidade e desempenho variam. Prefira um computador com Chrome ou Firefox atualizado.</div>
+  <div class="modal-actions"><button type="button" class="btn-secondary" data-close>Voltar à biblioteca</button><a class="btn-primary button-link" href="https://playjs.purei.org/" target="_blank" rel="noopener noreferrer">Abrir emulador ↗</a></div>
 </dialog>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 </body>

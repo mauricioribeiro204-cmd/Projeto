@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#090b12">
+  <meta name="description" content="RetroGames Hub: sua biblioteca pessoal dos clássicos de PlayStation 2, com acesso ao emulador que roda no navegador.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="RetroGames Hub">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./icon.svg">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+  <title>RetroGames Hub — Seus clássicos de PS2</title>
+</head>
+<body>
+<div class="shell" id="inicio">
+  <aside class="sidebar">
+    <a class="brand" href="#inicio" aria-label="RetroGames Hub, início"><span class="brand-mark"><span>R</span><b>✦</b></span><span class="brand-words">RETRO<span>GAMES</span><small>HUB <em>/</em> PLAYSTATION 2</small></span></a>
+    <p class="nav-heading">EXPLORAR</p>
+    <nav aria-label="Menu principal">
+      <a class="nav-item current" href="#inicio"><span class="nav-glyph">⌂</span> Página inicial</a>
+      <a class="nav-item" href="#biblioteca"><span class="nav-glyph">▦</span> Minha biblioteca <span class="nav-number">04</span></a>
+      <button class="nav-item" type="button" data-help><span class="nav-glyph">◎</span> Como jogar</button>
+    </nav>
+    <p class="nav-heading nav-sub">MINHA COLEÇÃO</p>
+    <div class="collection-item"><div class="collection-thumb">PS<span>2</span></div><div>Clássicos de PS2<small>4 jogos na coleção</small></div></div>
+    <div class="sidebar-bottom">
+      <div class="side-online"><i></i><div><strong>Biblioteca online</strong><small>Jogos e BIOS ficam no seu dispositivo.</small></div></div>
+      <small class="side-copy">RETROGAMES HUB · V1.0</small>
+    </div>
+  </aside>
+
+  <div class="main-column">
+    <header class="topbar">
+      <div class="top-left"><span class="top-mobile-mark">R<span>✦</span></span><span class="location-label">RETROGAMES HUB <b>/</b> <strong>MINHA BIBLIOTECA</strong></span></div>
+      <div class="top-actions"><span class="pad-status" id="pad-status"><i></i><span>Controle desconectado</span></span><button class="circle-btn" title="Como jogar" aria-label="Como jogar" type="button" data-help>?</button><span class="profile-dot">RG</span></div>
+    </header>
+
+    <main class="content">
+      <section class="welcome" aria-label="Boas-vindas">
+        <div><p class="eyebrow"><span class="eyebrow-line"></span> SUA MÁQUINA DO TEMPO</p><h1>Os clássicos nunca<br><em>saem de moda.</em></h1><p class="welcome-sub">Volte aos melhores momentos do PlayStation 2. Seus jogos favoritos, em uma biblioteca feita para você.</p></div>
+        <div class="count-box" aria-label="4 jogos na biblioteca"><span>04</span><small>JOGOS NA<br>COLEÇÃO</small></div>
+      </section>
+
+      <section class="featured" aria-label="Jogo em destaque">
+        <div class="feature-art" aria-hidden="true">
+          <div class="sun"></div><div class="mountains"></div><div class="skyline"></div><div class="palm left-palm"><span></span></div><div class="palm right-palm"><span></span></div>
+          <div class="feature-sign">SA</div><div class="ground-grid"></div>
+        </div>
+        <div class="featured-content">
+          <span class="feature-kicker">✦ &nbsp; DESTAQUE DA COLEÇÃO</span>
+          <div class="feature-studio">ROCKSTAR GAMES <span>•</span> MUNDO ABERTO</div>
+          <h2>SAN<br>ANDREAS<span>.</span></h2>
+          <p>As ruas de Los Santos estão te esperando. Reviva um dos mundos abertos mais marcantes dos videogames.</p>
+          <div class="feature-actions"><button class="btn-primary" type="button" data-play="san-andreas"><span>▶</span> JOGAR AGORA</button><span class="feature-platform">◉ &nbsp; PS2 · 2004</span></div>
+        </div>
+      </section>
+
+      <section class="stats" aria-label="Resumo da coleção">
+        <div class="stat"><span class="stat-icon violet">▦</span><div><strong>04</strong><span>Jogos na biblioteca</span></div></div>
+        <div class="stat"><span class="stat-icon orange">♥</span><div><strong id="favorite-count">00</strong><span>Seus favoritos</span></div></div>
+        <div class="stat"><span class="stat-icon mint">◉</span><div><strong id="last-played">Nenhum ainda</strong><span>Último jogo aberto</span></div></div>
+      </section>
+
+      <section class="library" id="biblioteca">
+        <div class="library-top">
+          <div><p class="eyebrow section-eyebrow">ESCOLHA SUA PRÓXIMA AVENTURA</p><h2>Minha biblioteca <span>(04)</span></h2></div>
+          <div class="library-controls"><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Buscar jogo..." aria-label="Buscar jogo"></label><button class="btn-filter" id="favorites-filter" type="button" aria-pressed="false">♡ Favoritos</button></div>
+        </div>
+
+        <div class="game-grid">
+          <article class="game" data-id="nfs" data-search="need for speed underground 2 nfs carros corrida">
+            <button class="cover cover-nfs" type="button" data-play="nfs" aria-label="Abrir Need for Speed Underground 2 no emulador">
+              <span class="cover-studio">EA GAMES <span>2004</span></span>
+              <span class="nfs-streak streak-one"></span><span class="nfs-streak streak-two"></span><span class="nfs-streak streak-three"></span>
+              <svg class="cover-illustration car-art" viewBox="0 0 320 180" aria-hidden="true"><path d="M12 126 L55 105 L97 67 L208 57 L262 86 L301 107 L315 135 L315 153 L15 153 Z" fill="#0f1721" stroke="#ecfaff" stroke-width="3"/><path d="M108 73 L199 66 L235 99 L75 105 Z" fill="#18a5a7" opacity=".9"/><path d="M35 129 L89 114 L235 113 L303 130" fill="none" stroke="#fcfbff" stroke-width="3"/><circle cx="78" cy="151" r="27" fill="#0b0d17" stroke="#e9edf2" stroke-width="5"/><circle cx="253" cy="151" r="27" fill="#0b0d17" stroke="#e9edf2" stroke-width="5"/><circle cx="78" cy="151" r="10" fill="#697483"/><circle cx="253" cy="151" r="10" fill="#697483"/><path d="M18 143 L3 145 M312 142 L319 143" stroke="#fa9d3e" stroke-width="9"/></svg>
+              <span class="nfs-wordmark"><small>NEED FOR SPEED</small>UNDERGROUND<b>2</b></span><span class="cover-footer">RUA · VELOCIDADE · NOITE</span>
+            </button>
+            <div class="game-info"><div class="game-titleline"><h3>Need for Speed Underground 2</h3><button class="heart" type="button" data-favorite="nfs" aria-label="Favoritar Need for Speed Underground 2" aria-pressed="false">♡</button></div><p>Corrida <span>•</span> 2004 <span>•</span> PS2</p><div class="game-bottom"><span class="game-engine">◉ Emulador Web</span><button class="btn-play" type="button" data-play="nfs">Jogar ↗</button></div></div>
+          </article>
+
+          <article class="game" data-id="san-andreas" data-search="grand theft auto gta san andreas mundo aberto aventura">
+            <button class="cover cover-gta" type="button" data-play="san-andreas" aria-label="Abrir GTA San Andreas no emulador">
+              <span class="cover-studio">ROCKSTAR GAMES <span>2004</span></span>
+              <div class="gta-sun"></div><div class="gta-buildings"></div><div class="gta-palm one"></div><div class="gta-palm two"></div>
+              <span class="gta-wordmark"><small>grand theft auto</small><b>San Andreas</b></span><span class="cover-footer">LOS SANTOS · SAN FIERRO</span>
+            </button>
+            <div class="game-info"><div class="game-titleline"><h3>GTA San Andreas</h3><button class="heart" type="button" data-favorite="san-andreas" aria-label="Favoritar GTA San Andreas" aria-pressed="false">♡</button></div><p>Mundo aberto <span>•</span> 2004 <span>•</span> PS2</p><div class="game-bottom"><span class="game-engine">◉ Emulador Web</span><button class="btn-play" type="button" data-play="san-andreas">Jogar ↗</button></div></div>
+          </article>
+
+          <article class="game" data-id="bully" data-search="bully escola rockstar aventura bullworth">
+            <button class="cover cover-bully" type="button" data-play="bully" aria-label="Abrir Bully no emulador">
+              <span class="cover-studio">ROCKSTAR GAMES <span>2006</span></span><span class="bully-ring ring-one"></span><span class="bully-ring ring-two"></span>
+              <span class="bully-crest"><span>★</span><small>BULLWORTH</small><b>ACADEMY</b><span class="crest-checker">◆ ◆ ◆</span></span>
+              <span class="bully-wordmark">BULLY</span><span class="cover-footer">WELCOME TO BULLWORTH</span>
+            </button>
+            <div class="game-info"><div class="game-titleline"><h3>Bully</h3><button class="heart" type="button" data-favorite="bully" aria-label="Favoritar Bully" aria-pressed="false">♡</button></div><p>Aventura <span>•</span> 2006 <span>•</span> PS2</p><div class="game-bottom"><span class="game-engine">◉ Emulador Web</span><button class="btn-play" type="button" data-play="bully">Jogar ↗</button></div></div>
+          </article>
+
+          <article class="game" data-id="black" data-search="black criterion shooter fps tiro ação">
+            <button class="cover cover-black" type="button" data-play="black" aria-label="Abrir Black no emulador">
+              <span class="cover-studio">CRITERION GAMES <span>2006</span></span><div class="target-ring ring-a"></div><div class="target-ring ring-b"></div><div class="target-ring ring-c"></div><div class="target-cross"></div><span class="bullet-spark spark-a">✳</span><span class="bullet-spark spark-b">✳</span>
+              <span class="black-wordmark">BLACK<span>.</span></span><span class="cover-footer">NO COVER · NO MERCY</span>
+            </button>
+            <div class="game-info"><div class="game-titleline"><h3>Black</h3><button class="heart" type="button" data-favorite="black" aria-label="Favoritar Black" aria-pressed="false">♡</button></div><p>Tiro / FPS <span>•</span> 2006 <span>•</span> PS2</p><div class="game-bottom"><span class="game-engine">◉ Emulador Web</span><button class="btn-play" type="button" data-play="black">Jogar ↗</button></div></div>
+          </article>
+        </div>
+        <div class="empty" id="empty" hidden><span>⌕</span><h3>Nenhum jogo encontrado</h3><p>Tente outra busca ou remova o filtro de favoritos.</p></div>
+      </section>
+
+      <section class="tip-strip"><div class="tip-symbol">⌘</div><div><strong>Pronto para voltar no tempo?</strong><p>Ao clicar em Jogar, você abre o emulador TabStationToo. Na primeira vez, escolha a BIOS do seu PS2 e a pasta com suas ISOs. Os arquivos permanecem no dispositivo.</p></div><button type="button" data-help>Ver como funciona ↗</button></section>
+    </main>
+    <footer class="footer"><span>© 2026 RetroGames Hub · Sua biblioteca pessoal</span><span>Interface independente · Sem jogos ou BIOS inclusos</span></footer>
+  </div>
+</div>
+
+<dialog id="help-dialog" class="dialog">
+  <div class="modal-head"><span class="modal-label">GUIA RÁPIDO</span><button type="button" class="close-modal" aria-label="Fechar" data-close>✕</button></div>
+  <h2>Como jogar no navegador</h2>
+  <p class="modal-intro">O RetroGames Hub é sua biblioteca. A emulação acontece no <strong>TabStationToo</strong>, em uma nova aba, sem instalar um programa no computador.</p>
+  <ol class="steps">
+    <li><b>1</b><div><strong>Tenha seus próprios arquivos</strong><span>Uma BIOS extraída do seu PS2 e ISOs criadas a partir dos seus discos originais.</span></div></li>
+    <li><b>2</b><div><strong>Clique em Jogar</strong><span>O emulador abre em uma nova aba. Ele não recebe automaticamente o jogo escolhido nesta biblioteca.</span></div></li>
+    <li><b>3</b><div><strong>Selecione a BIOS e a ISO</strong><span>Na biblioteca do emulador, escolha a BIOS e a pasta com seus jogos. Depois coloque o disco desejado e inicie.</span></div></li>
+    <li><b>4</b><div><strong>Use teclado ou controle</strong><span>O emulador aceita teclado e controles compatíveis. Os salvamentos ficam no navegador do emulador.</span></div></li>
+  </ol>
+  <div class="modal-note"><strong>Importante:</strong> o projeto não inclui BIOS, ISOs ou os jogos. O emulador é experimental; compatibilidade e desempenho variam, e atualmente ele não suporta celulares.</div>
+  <div class="modal-actions"><button type="button" class="btn-secondary" data-close>Voltar à biblioteca</button><a class="btn-primary button-link" href="https://tabstationtoo.github.io/TabStationToo/" target="_blank" rel="noopener noreferrer">Abrir emulador ↗</a></div>
+</dialog>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

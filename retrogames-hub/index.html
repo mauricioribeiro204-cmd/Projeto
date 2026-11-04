@@ -14,9 +14,9 @@
   <link rel="apple-touch-icon" href="./icon.svg">
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./iso-folder.css">
-  <link rel="stylesheet" href="./ps5.css?v=3">
-  <script src="./app.js?v=3" defer></script>
-  <script src="./iso-folder.js?v=3" defer></script>
+  <link rel="stylesheet" href="./ps5.css?v=4">
+  <script src="./app.js?v=4" defer></script>
+  <script src="./iso-folder.js?v=4" defer></script>
   <title>RetroGames Hub — Seus clássicos de PS2</title>
 </head>
 <body>
@@ -76,7 +76,9 @@
           <div class="library-controls"><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Buscar jogo..." aria-label="Buscar jogo"></label><button class="btn-filter" id="favorites-filter" type="button" aria-pressed="false">♡ Favoritos</button></div>
         </div>
 
-        <div class="game-grid">
+        <div class="game-grid" id="game-grid" aria-live="polite"></div>
+        <!-- Modelos visuais não aparecem até existir uma ISO correspondente na pasta local. -->
+        <template id="game-card-templates">
           <article class="game" hidden data-id="nfs" data-search="need for speed underground 2 nfs carros corrida">
             <button class="cover cover-nfs" type="button" data-select="nfs" aria-label="Selecionar Need for Speed Underground 2 no emulador">
               <span class="cover-studio">EA GAMES <span>2004</span></span>
@@ -120,7 +122,7 @@
             </button>
             <div class="game-info"><div class="game-titleline"><h3>Guitar Hero III</h3><button class="heart" type="button" data-favorite="guitar-hero-3" aria-label="Favoritar Guitar Hero III" aria-pressed="false">♡</button></div><p>Música / Ritmo <span>•</span> 2007 <span>•</span> PS2</p><div class="game-bottom"><span class="game-engine">◉ Emulador Web</span><button class="btn-play" type="button" data-play="guitar-hero-3">Jogar ↗</button></div></div>
           </article>
-        </div>
+        </template>
         <div class="empty" id="empty"><span>▣</span><h3 id="empty-title">Conecte sua pasta de ISOs</h3><p id="empty-description">A biblioteca mostrará somente os jogos encontrados no seu computador.</p><a href="#minhas-isos" class="empty-action">Escolher pasta de jogos</a></div>
       </section>
 
@@ -129,7 +131,7 @@
           <div>
             <p class="eyebrow section-eyebrow">SEUS JOGOS, NO SEU COMPUTADOR</p>
             <h2>Minha pasta de ISOs <span class="iso-count" id="iso-count">0 arquivos</span></h2>
-            <p class="iso-subtitle">A biblioteca mostrará apenas os jogos que estiverem nesta pasta. A seleção fica lembrada no navegador quando permitido.</p>
+            <p class="iso-subtitle">A biblioteca começa vazia e mostra somente os arquivos de jogos encontrados nesta pasta, inclusive títulos novos. A pasta fica lembrada no navegador quando permitido.</p>
           </div>
           <div class="iso-manager-buttons">
             <button class="iso-primary" id="iso-connect" type="button">◈ &nbsp; Conectar pasta</button>

@@ -14,6 +14,18 @@ https://mauricioribeiro204-cmd.github.io/Projeto/retrogames-hub/
 
 A página é independente de `/Projeto/index.html` (Meu Controle), que **não foi alterado**.
 
+## Pasta de ISOs lembrada
+
+Na seção **Minha pasta de ISOs**, clique em **Conectar pasta**, escolha uma pasta no Windows (por exemplo, `D:\\RetroGames\\PS2`) e autorize o acesso. O navegador lista jogos com extensões `.iso`, `.chd`, `.cso`, `.isz`, `.bin` e `.elf` (inclusive em subpastas até três níveis). Os quatro clássicos são vinculados automaticamente quando o nome do arquivo é reconhecido; você pode escolher a correspondência manualmente nos menus **Vincular a**.
+
+O projeto guarda **a referência à pasta** no armazenamento IndexedDB deste navegador, não o caminho completo em texto e não os arquivos ISO. Ao abrir novamente o site, ele tenta ler a pasta e atualizar a lista. Se a permissão tiver expirado, use **Reconectar pasta** e permita a leitura. No Chrome recente, conceder acesso permanente ou instalar o app pode permitir uma experiência com menos solicitações. As permissões dependem do navegador e do usuário.
+
+**Privacidade:** a pasta e os títulos dos arquivos são lidos só no dispositivo. Não há servidor, upload de ISO ou envio de BIOS ao GitHub. Desconectar remove a referência à pasta e os vínculos locais, mas não apaga os arquivos físicos.
+
+**Compatibilidade:** o acesso persistente a diretórios exige desktop Chrome ou Edge. Em navegadores sem `showDirectoryPicker`, o aplicativo oferece uma seleção de pasta *temporária*, que precisa ser repetida após recarregar.
+
+**Limite atual:** o Play!.js oficial está em outro domínio e **não recebe automaticamente** as ISOs identificadas aqui. O botão Jogar abre seu emulador oficial em outra aba, e você escolhe o arquivo local no seletor dele. Para executar automaticamente o jogo já vinculado, seria necessária uma versão do motor Play! hospedada no próprio projeto, adaptada para consumir esses arquivos e validada para cada jogo.
+
 ## Como jogar
 1. Abra a biblioteca no computador.
 2. Clique na capa ou no botão **Jogar**.
@@ -35,6 +47,8 @@ No navegador, escolha **Adicionar à tela inicial** / **Instalar aplicativo**, q
 - `index.html`: biblioteca e interface.
 - `styles.css`: visual responsivo e ilustrações dos jogos feitas com CSS/SVG.
 - `app.js`: ações dos botões, busca, favoritos, detecção de gamepad e abertura do emulador.
+- `iso-folder.js`: seleção/lembrança de pasta no IndexedDB, varredura de ISOs, permissões, vínculos por jogo.
+- `iso-folder.css`: apresentação dos arquivos encontrados na pasta.
 - `manifest.webmanifest`: dados do app/atalho.
 - `icon.svg`: ícone próprio.
 

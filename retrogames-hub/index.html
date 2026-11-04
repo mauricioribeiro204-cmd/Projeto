@@ -13,7 +13,9 @@
   <link rel="icon" href="./icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="./icon.svg">
   <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./iso-folder.css">
   <script src="./app.js" defer></script>
+  <script src="./iso-folder.js" defer></script>
   <title>RetroGames Hub — Seus clássicos de PS2</title>
 </head>
 <body>
@@ -24,6 +26,7 @@
     <nav aria-label="Menu principal">
       <a class="nav-item current" href="#inicio"><span class="nav-glyph">⌂</span> Página inicial</a>
       <a class="nav-item" href="#biblioteca"><span class="nav-glyph">▦</span> Minha biblioteca <span class="nav-number">04</span></a>
+      <a class="nav-item" href="#minhas-isos"><span class="nav-glyph">▤</span> Pasta de ISOs</a>
       <button class="nav-item" type="button" data-help><span class="nav-glyph">◎</span> Como jogar</button>
     </nav>
     <p class="nav-heading nav-sub">MINHA COLEÇÃO</p>
@@ -64,6 +67,27 @@
         <div class="stat"><span class="stat-icon violet">▦</span><div><strong>04</strong><span>Jogos na biblioteca</span></div></div>
         <div class="stat"><span class="stat-icon orange">♥</span><div><strong id="favorite-count">00</strong><span>Seus favoritos</span></div></div>
         <div class="stat"><span class="stat-icon mint">◉</span><div><strong id="last-played">Nenhum ainda</strong><span>Último jogo aberto</span></div></div>
+      </section>
+
+      <section class="iso-manager" id="minhas-isos" aria-label="Gerenciar pasta de jogos">
+        <div class="iso-manager-header">
+          <div>
+            <p class="eyebrow section-eyebrow">SEUS JOGOS, NO SEU COMPUTADOR</p>
+            <h2>Minha pasta de ISOs <span class="iso-count" id="iso-count">0 arquivos</span></h2>
+            <p class="iso-subtitle">Escolha uma pasta uma vez. O RetroGames Hub lembrará dela neste navegador e tentará atualizar sua coleção ao abrir.</p>
+          </div>
+          <div class="iso-manager-buttons">
+            <button class="iso-primary" id="iso-connect" type="button">◈ &nbsp; Conectar pasta</button>
+            <button class="iso-secondary" id="iso-refresh" type="button" disabled>↻ &nbsp; Atualizar</button>
+            <button class="iso-quiet" id="iso-disconnect" type="button" hidden>Desconectar</button>
+          </div>
+        </div>
+        <div class="iso-location"><span class="iso-folder-icon">▤</span><div><strong id="iso-folder-name">Nenhuma pasta conectada</strong><span id="iso-folder-status" role="status">As ISOs não são enviadas ao GitHub nem copiadas para o site.</span></div><span class="iso-storage-tag">◉ LOCAL</span></div>
+        <div class="iso-list" id="iso-list" aria-live="polite">
+          <div class="iso-empty">Conecte sua pasta de jogos para visualizar as ISOs aqui.</div>
+        </div>
+        <p class="iso-note">Compatível com <b>Chrome e Edge no computador</b>. Se o navegador pedir autorização ao reabrir, clique em <b>Reconectar pasta</b>. As ISOs continuam no disco. O Play!.js ainda exige selecionar manualmente a ISO na tela do emulador; não há transferência automática entre os dois sites.</p>
+        <input id="iso-folder-fallback" type="file" multiple webkitdirectory hidden aria-label="Selecionar pasta de ISOs">
       </section>
 
       <section class="library" id="biblioteca">
@@ -112,7 +136,7 @@
         <div class="empty" id="empty" hidden><span>⌕</span><h3>Nenhum jogo encontrado</h3><p>Tente outra busca ou remova o filtro de favoritos.</p></div>
       </section>
 
-      <section class="tip-strip"><div class="tip-symbol">⌘</div><div><strong>Pronto para voltar no tempo?</strong><p>Ao clicar em Jogar, você abre o Play!.js em outra aba. Escolha sua ISO dentro do emulador para começar. Não é necessário fornecer BIOS.</p></div><button type="button" data-help>Ver como funciona ↗</button></section>
+      <section class="tip-strip"><div class="tip-symbol">⌘</div><div><strong>Pronto para voltar no tempo?</strong><p>Conecte sua pasta de ISOs para manter o catálogo atualizado neste navegador. Ao clicar em Jogar, o Play!.js abre em outra aba; por enquanto, escolha a ISO nele. Não é necessário fornecer BIOS.</p></div><button type="button" data-help>Ver como funciona ↗</button></section>
     </main>
     <footer class="footer"><span>© 2026 RetroGames Hub · Sua biblioteca pessoal</span><span>Interface independente · Sem jogos ou BIOS inclusos</span></footer>
   </div>
